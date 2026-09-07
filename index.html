@@ -9,8 +9,10 @@
         h1 { color: #ff6b6b; font-size: 28px; }
         h2 { color: #4ecdc4; font-size: 22px; margin-top: 30px; }
         .top-bar { margin-bottom: 20px; }
-        .btn-reset { background-color: #ff7675; color: white; border: none; padding: 10px 20px; font-size: 18px; border-radius: 10px; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.2); font-weight: bold; }
-        .btn-reset:hover { background-color: #d63031; }
+        .btn-reset { background-color: #74b9ff; color: white; border: none; padding: 10px 18px; font-size: 16px; border-radius: 10px; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.2); font-weight: bold; margin: 5px; }
+        .btn-reset:hover { background-color: #0984e3; }
+        .btn-shuffle { background-color: #ff7675; color: white; border: none; padding: 10px 18px; font-size: 16px; border-radius: 10px; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.2); font-weight: bold; margin: 5px; }
+        .btn-shuffle:hover { background-color: #d63031; }
         .question-card { background: white; border-radius: 15px; padding: 20px; margin: 15px auto; width: 90%; max-width: 600px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); text-align: left; }
         .word { font-size: 22px; font-weight: bold; color: #ff9f43; margin: 10px 0; text-align: center; }
         .btn-speak { background-color: #48dbfb; border: none; padding: 8px 15px; font-size: 16px; border-radius: 10px; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.2); margin-bottom: 10px; }
@@ -26,7 +28,8 @@
     <h1>🌟 學校生活小挑戰 🌟</h1>
 
     <div class="top-bar">
-        <button class="btn-reset" onclick="resetQuiz()">🔄 重新開始 / 洗牌再玩</button>
+        <button class="btn-reset" onclick="resetOrdered()">🔄 順序重置</button>
+        <button class="btn-shuffle" onclick="resetShuffled()">🔀 洗牌重置</button>
     </div>
 
     <h2>🅰️ 第一部分：聽音拼字 (Vocabulary)</h2>
@@ -36,8 +39,8 @@
     <div id="sentence-container"></div>
 
     <script>
-        // 詞語題庫
-        let vocabQuestions = [
+        // 原始題庫
+        let originalVocab = [
             { id: 'v1', audio: 'v1.m4a', ans: 'a principal' },
             { id: 'v2', audio: 'v2.m4a', ans: 'a teacher' },
             { id: 'v3', audio: 'v3.m4a', ans: 'a monitor' },
@@ -46,8 +49,7 @@
             { id: 'v6', audio: 'v6.m4a', ans: 'rings' }
         ];
 
-        // 句子題庫
-        let sentenceQuestions = [
+        let originalSentence = [
             { id: 's1', audio: 's1.m4a', hint: 'meet / Nice / Allie. / to / you,', ans: 'Nice to meet you, Allie.' },
             { id: 's2', audio: 's2.m4a', hint: 'are / old / you / How / ?', ans: 'How old are you?' },
             { id: 's3', audio: 's3.m4a', hint: 'six / am / old / years / I / .', ans: 'I am six years old.' },
@@ -56,19 +58,16 @@
             { id: 's6', audio: 's6.m4a', hint: 'time / to / is / home. / It / go', ans: 'It is time to go home.' }
         ];
 
-        // 隨機排序（洗牌功能）
+        // 隨機排序函數
         function shuffle(array) {
-            return array.sort(() => Math.random() - 0.5);
+            let arr = [...array];
+            return arr.sort(() => Math.random() - 0.5);
         }
 
-        function renderQuiz() {
-            // 每次重新整理或重設都會隨機排次序
-            let shuffledVocab = shuffle([...vocabQuestions]);
-            let shuffledSentence = shuffle([...sentenceQuestions]);
-
+        function renderQuiz(vocabList, sentenceList) {
             // 渲染詞語題
             let vocabHTML = '';
-            shuffledVocab.forEach((q, index) => {
+            vocabList.forEach((q) => {
                 vocabHTML += `
                     <div class="question-card">
                         <audio id="audio_${q.id}" src="${q.audio}"></audio>
@@ -83,7 +82,7 @@
 
             // 渲染句子題
             let sentenceHTML = '';
-            shuffledSentence.forEach((q, index) => {
+            sentenceList.forEach((q) => {
                 sentenceHTML += `
                     <div class="question-card">
                         <p class="word">${q.hint}</p>
@@ -111,12 +110,20 @@
             }
         }
 
-        function resetQuiz() {
-            renderQuiz();
+        // 順序重置：用返原本順序
+        function resetOrdered() {
+            renderQuiz(originalVocab, originalSentence);
         }
 
-        // 網頁一開就自動隨機載入一次
-        renderQuiz();
+        // 洗牌重置：隨機打亂次序
+        function resetShuffled() {
+            let shuffledVocab = shuffle(originalVocab);
+            let shuffledSentence = shuffle(originalSentence);
+            renderQuiz(shuffledVocab, shuffledSentence);
+        }
+
+        // 網頁一開預設順序載入
+        resetOrdered();
     </script>
 
 </body>
