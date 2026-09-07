@@ -38,6 +38,9 @@
     <h2>🅱️ 第二部分：句子重組 (Sentences)</h2>
     <div id="sentence-container"></div>
 
+    <h2>🇨 第三部分：句子純聽寫 (Dictation)</h2>
+    <div id="dictation-container"></div>
+
     <script>
         // 原始題庫
         let originalVocab = [
@@ -58,13 +61,22 @@
             { id: 's6', audio: 's6.m4a', hint: 'time / to / is / home. / It / go', ans: 'It is time to go home.' }
         ];
 
+        let originalDictation = [
+            { id: 'd1', audio: 's1.m4a', ans: 'Nice to meet you, Allie.' },
+            { id: 'd2', audio: 's2.m4a', ans: 'How old are you?' },
+            { id: 'd3', audio: 's3.m4a', ans: 'I am six years old.' },
+            { id: 'd4', audio: 's4.m4a', ans: 'Good morning, children.' },
+            { id: 'd5', audio: 's5.m4a', ans: 'I am fine, thank you.' },
+            { id: 'd6', audio: 's6.m4a', ans: 'It is time to go home.' }
+        ];
+
         // 隨機排序函數
         function shuffle(array) {
             let arr = [...array];
             return arr.sort(() => Math.random() - 0.5);
         }
 
-        function renderQuiz(vocabList, sentenceList) {
+        function renderQuiz(vocabList, sentenceList, dictationList) {
             // 渲染詞語題
             let vocabHTML = '';
             vocabList.forEach((q) => {
@@ -80,7 +92,7 @@
             });
             document.getElementById('vocab-container').innerHTML = vocabHTML;
 
-            // 渲染句子題
+            // 渲染句子重組題
             let sentenceHTML = '';
             sentenceList.forEach((q) => {
                 sentenceHTML += `
@@ -95,6 +107,21 @@
                 `;
             });
             document.getElementById('sentence-container').innerHTML = sentenceHTML;
+
+            // 渲染純聽寫題（使用 s1 至 s6 錄音）
+            let dictationHTML = '';
+            dictationList.forEach((q) => {
+                dictationHTML += `
+                    <div class="question-card">
+                        <audio id="audio_${q.id}" src="${q.audio}"></audio>
+                        <button class="btn-speak" onclick="document.getElementById('audio_${q.id}').play()">🔊 聽爸爸讀句子</button><br><br>
+                        <input type="text" id="ans_${q.id}" class="input-full" placeholder="聼錄音寫出整句">
+                        <button class="btn-check" onclick="checkAnswer('ans_${q.id}', '${q.ans}')">檢查</button>
+                        <p id="res_${q.id}" class="feedback"></p>
+                    </div>
+                `;
+            });
+            document.getElementById('dictation-container').innerHTML = dictationHTML;
         }
 
         function checkAnswer(inputId, correctAns) {
@@ -110,19 +137,20 @@
             }
         }
 
-        // 順序重置：用返原本順序
+        // 順序重置
         function resetOrdered() {
-            renderQuiz(originalVocab, originalSentence);
+            renderQuiz(originalVocab, originalSentence, originalDictation);
         }
 
-        // 洗牌重置：隨機打亂次序
+        // 洗牌重置
         function resetShuffled() {
             let shuffledVocab = shuffle(originalVocab);
             let shuffledSentence = shuffle(originalSentence);
-            renderQuiz(shuffledVocab, shuffledSentence);
+            let shuffledDictation = shuffle(originalDictation);
+            renderQuiz(shuffledVocab, shuffledSentence, shuffledDictation);
         }
 
-        // 網頁一開預設順序載入
+        // 預設順序載入
         resetOrdered();
     </script>
 
