@@ -36,16 +36,36 @@
     </div>
 
     <script>
+        // 等待系統準備好唔同嘅發聲語言
+        let voices = [];
+        window.speechSynthesis.onvoiceschanged = () => {
+            voices = window.speechSynthesis.getVoices();
+        };
+
         function speak(text) {
             let msg = new SpeechSynthesisUtterance(text);
-            msg.lang = 'en-US';
+            
+            // 如果系統已經載入咗聲音，就盡量揀把好聽嘅美式/英式英文
+            if (voices.length > 0) {
+                let engVoice = voices.find(v => v.lang === 'en-US' || v.name.includes('English') || v.lang === 'en-GB');
+                if (engVoice) {
+                    msg.voice = engVoice;
+                }
+            } else {
+                msg.lang = 'en-US';
+            }
+
+            // 調校語速同聲調，等小朋友聽得清楚啲、舒服啲
+            msg.rate = 0.8;  // 0.8 係慢少少（預設係 1）
+            msg.pitch = 1.1; // 稍微高音少少，聽落開心啲
+
             window.speechSynthesis.speak(msg);
         }
 
         function checkAnswer(inputId, correctAns) {
             let userAns = document.getElementById(inputId).value.trim();
             let resId = inputId.replace('ans', 'res');
-            if (userAns === correctAns) {
+            if (userAns.toLowerCase() === correctAns.toLowerCase()) {
                 document.getElementById(resId).innerHTML = "✅ 答啱咗啦！好叻女！";
                 document.getElementById(resId).style.color = "green";
             } else {
