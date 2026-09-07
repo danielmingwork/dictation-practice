@@ -13,7 +13,6 @@
         .btn-speak { background-color: #48dbfb; border: none; padding: 8px 15px; font-size: 16px; border-radius: 10px; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.2); margin-bottom: 10px; }
         .btn-speak:hover { background-color: #0abde3; }
         .btn-check { background-color: #ffe66d; border: none; padding: 8px 15px; font-size: 16px; border-radius: 10px; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.2); margin-left: 10px; }
-        .btn-check:hover { background-color: #ffd166; }
         input { font-size: 18px; padding: 8px; border-radius: 5px; border: 1px solid #ccc; width: 60%; }
         .input-full { width: 75%; }
         .feedback { font-weight: bold; margin-top: 10px; }
@@ -27,8 +26,8 @@
 
     <!-- Vocab 1 -->
     <div class="question-card">
-        <button class="btn-speak" onclick="speak('a principal')">🔊 聽發音</button>
-        <br>
+        <audio id="audio_v1" src="v1.m4a"></audio>
+        <button class="btn-speak" onclick="document.getElementById('audio_v1').play()">🔊 聽爸爸讀</button><br>
         <input type="text" id="ans1" placeholder="輸入英文字">
         <button class="btn-check" onclick="checkAnswer('ans1', 'a principal')">檢查</button>
         <p id="res1" class="feedback"></p>
@@ -36,8 +35,8 @@
 
     <!-- Vocab 2 -->
     <div class="question-card">
-        <button class="btn-speak" onclick="speak('a teacher')">🔊 聽發音</button>
-        <br>
+        <audio id="audio_v2" src="v2.m4a"></audio>
+        <button class="btn-speak" onclick="document.getElementById('audio_v2').play()">🔊 聽爸爸讀</button><br>
         <input type="text" id="ans2" placeholder="輸入英文字">
         <button class="btn-check" onclick="checkAnswer('ans2', 'a teacher')">檢查</button>
         <p id="res2" class="feedback"></p>
@@ -45,8 +44,8 @@
 
     <!-- Vocab 3 -->
     <div class="question-card">
-        <button class="btn-speak" onclick="speak('a monitor')">🔊 聽發音</button>
-        <br>
+        <audio id="audio_v3" src="v3.m4a"></audio>
+        <button class="btn-speak" onclick="document.getElementById('audio_v3').play()">🔊 聽爸爸讀</button><br>
         <input type="text" id="ans3" placeholder="輸入英文字">
         <button class="btn-check" onclick="checkAnswer('ans3', 'a monitor')">檢查</button>
         <p id="res3" class="feedback"></p>
@@ -54,8 +53,8 @@
 
     <!-- Vocab 4 -->
     <div class="question-card">
-        <button class="btn-speak" onclick="speak('a classmate')">🔊 聽發音</button>
-        <br>
+        <audio id="audio_v4" src="v4.m4a"></audio>
+        <button class="btn-speak" onclick="document.getElementById('audio_v4').play()">🔊 聽爸爸讀</button><br>
         <input type="text" id="ans4" placeholder="輸入英文字">
         <button class="btn-check" onclick="checkAnswer('ans4', 'a classmate')">檢查</button>
         <p id="res4" class="feedback"></p>
@@ -63,8 +62,8 @@
 
     <!-- Vocab 5 -->
     <div class="question-card">
-        <button class="btn-speak" onclick="speak('the bell')">🔊 聽發音</button>
-        <br>
+        <audio id="audio_v5" src="v5.m4a"></audio>
+        <button class="btn-speak" onclick="document.getElementById('audio_v5').play()">🔊 聽爸爸讀</button><br>
         <input type="text" id="ans5" placeholder="輸入英文字">
         <button class="btn-check" onclick="checkAnswer('ans5', 'the bell')">檢查</button>
         <p id="res5" class="feedback"></p>
@@ -72,20 +71,20 @@
 
     <!-- Vocab 6 -->
     <div class="question-card">
-        <button class="btn-speak" onclick="speak('rings')">🔊 聽發音</button>
-        <br>
+        <audio id="audio_v6" src="v6.m4a"></audio>
+        <button class="btn-speak" onclick="document.getElementById('audio_v6').play()">🔊 聽爸爸讀</button><br>
         <input type="text" id="ans6" placeholder="輸入英文字">
         <button class="btn-check" onclick="checkAnswer('ans6', 'rings')">檢查</button>
         <p id="res6" class="feedback"></p>
     </div>
 
     <h2>🅱️ 第二部分：句子重組 (Sentences)</h2>
-    <p>提提你：記得打埋標點符號同留意大細階呀！</p>
 
     <!-- Sentence 1 -->
     <div class="question-card">
         <p class="word">meet / Nice / Allie. / to / you,</p>
-        <button class="btn-speak" onclick="speak('Nice to meet you, Allie.')">🔊 聽發音提示</button><br><br>
+        <audio id="audio_s1" src="s1.m4a"></audio>
+        <button class="btn-speak" onclick="document.getElementById('audio_s1').play()">🔊 聽爸爸讀提示</button><br><br>
         <input type="text" id="ans7" class="input-full" placeholder="輸入完整句子">
         <button class="btn-check" onclick="checkAnswer('ans7', 'Nice to meet you, Allie.')">檢查</button>
         <p id="res7" class="feedback"></p>
@@ -94,7 +93,8 @@
     <!-- Sentence 2 -->
     <div class="question-card">
         <p class="word">are / old / you / How / ?</p>
-        <button class="btn-speak" onclick="speak('How old are you?')">🔊 聽發音提示</button><br><br>
+        <audio id="audio_s2" src="s2.m4a"></audio>
+        <button class="btn-speak" onclick="document.getElementById('audio_s2').play()">🔊 聽爸爸讀提示</button><br><br>
         <input type="text" id="ans8" class="input-full" placeholder="輸入完整句子">
         <button class="btn-check" onclick="checkAnswer('ans8', 'How old are you?')">檢查</button>
         <p id="res8" class="feedback"></p>
@@ -103,7 +103,8 @@
     <!-- Sentence 3 -->
     <div class="question-card">
         <p class="word">six / am / old / years / I / .</p>
-        <button class="btn-speak" onclick="speak('I am six years old.')">🔊 聽發音提示</button><br><br>
+        <audio id="audio_s3" src="s3.m4a"></audio>
+        <button class="btn-speak" onclick="document.getElementById('audio_s3').play()">🔊 聽爸爸讀提示</button><br><br>
         <input type="text" id="ans9" class="input-full" placeholder="輸入完整句子">
         <button class="btn-check" onclick="checkAnswer('ans9', 'I am six years old.')">檢查</button>
         <p id="res9" class="feedback"></p>
@@ -112,7 +113,8 @@
     <!-- Sentence 4 -->
     <div class="question-card">
         <p class="word">children. / morning, / Good</p>
-        <button class="btn-speak" onclick="speak('Good morning, children.')">🔊 聽發音提示</button><br><br>
+        <audio id="audio_s4" src="s4.m4a"></audio>
+        <button class="btn-speak" onclick="document.getElementById('audio_s4').play()">🔊 聽爸爸讀提示</button><br><br>
         <input type="text" id="ans10" class="input-full" placeholder="輸入完整句子">
         <button class="btn-check" onclick="checkAnswer('ans10', 'Good morning, children.')">檢查</button>
         <p id="res10" class="feedback"></p>
@@ -121,7 +123,8 @@
     <!-- Sentence 5 -->
     <div class="question-card">
         <p class="word">fine, / I / you. / am / thank</p>
-        <button class="btn-speak" onclick="speak('I am fine, thank you.')">🔊 聽發音提示</button><br><br>
+        <audio id="audio_s5" src="s5.m4a"></audio>
+        <button class="btn-speak" onclick="document.getElementById('audio_s5').play()">🔊 聽爸爸讀提示</button><br><br>
         <input type="text" id="ans11" class="input-full" placeholder="輸入完整句子">
         <button class="btn-check" onclick="checkAnswer('ans11', 'I am fine, thank you.')">檢查</button>
         <p id="res11" class="feedback"></p>
@@ -130,35 +133,15 @@
     <!-- Sentence 6 -->
     <div class="question-card">
         <p class="word">time / to / is / home. / It / go</p>
-        <button class="btn-speak" onclick="speak('It is time to go home.')">🔊 聽發音提示</button><br><br>
+        <audio id="audio_s6" src="s6.m4a"></audio>
+        <button class="btn-speak" onclick="document.getElementById('audio_s6').play()">🔊 聽爸爸讀提示</button><br><br>
         <input type="text" id="ans12" class="input-full" placeholder="輸入完整句子">
         <button class="btn-check" onclick="checkAnswer('ans12', 'It is time to go home.')">檢查</button>
         <p id="res12" class="feedback"></p>
     </div>
 
     <script>
-        let voices = [];
-        window.speechSynthesis.onvoiceschanged = () => {
-            voices = window.speechSynthesis.getVoices();
-        };
-
-        function speak(text) {
-            let msg = new SpeechSynthesisUtterance(text);
-            if (voices.length > 0) {
-                let engVoice = voices.find(v => v.lang === 'en-US' || v.name.includes('English') || v.lang === 'en-GB');
-                if (engVoice) {
-                    msg.voice = engVoice;
-                }
-            } else {
-                msg.lang = 'en-US';
-            }
-            msg.rate = 0.8;  
-            msg.pitch = 1.1; 
-            window.speechSynthesis.speak(msg);
-        }
-
         function checkAnswer(inputId, correctAns) {
-            // 自動清除多餘空格，方便小朋友對答案
             let userAns = document.getElementById(inputId).value.trim().replace(/\s+/g, ' ');
             let resId = inputId.replace('ans', 'res');
             
