@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>囡囡嘅專屬溫習站</title>
+    <style>
+        body { font-family: "Comic Sans MS", sans-serif; background-color: #fdf6e3; text-align: center; padding: 20px; }
+        h1 { color: #ff6b6b; }
+        .question-card { background: white; border-radius: 15px; padding: 20px; margin: 15px auto; width: 80%; max-width: 500px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        .word { font-size: 24px; font-weight: bold; color: #4ecdc4; margin: 10px 0; }
+        button { background-color: #ffe66d; border: none; padding: 10px 20px; font-size: 18px; border-radius: 10px; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
+        button:hover { background-color: #ffd166; }
+        input { font-size: 18px; padding: 5px; border-radius: 5px; border: 1px solid #ccc; text-align: center; }
+    </style>
+</head>
+<body>
+
+    <h1>🌟 學校生活小挑戰 🌟</h1>
+
+    <div class="question-card">
+        <p>聽讀音，然後拼出生字：</p>
+        <button onclick="speak('a principal')">🔊 聽發音</button>
+        <br><br>
+        <input type="text" id="ans1" placeholder="輸入英文字">
+        <button onclick="checkAnswer('ans1', 'a principal')">檢查</button>
+        <p id="res1"></p>
+    </div>
+
+    <div class="question-card">
+        <p>重組句子：</p>
+        <p class="word">are / old / you / How / ?</p>
+        <input type="text" id="ans2" placeholder="輸入完整句子" style="width: 80%;">
+        <button onclick="checkAnswer('ans2', 'How old are you?')">檢查</button>
+        <p id="res2"></p>
+    </div>
+
+    <script>
+        function speak(text) {
+            let msg = new SpeechSynthesisUtterance(text);
+            msg.lang = 'en-US';
+            window.speechSynthesis.speak(msg);
+        }
+
+        function checkAnswer(inputId, correctAns) {
+            let userAns = document.getElementById(inputId).value.trim();
+            let resId = inputId.replace('ans', 'res');
+            if (userAns === correctAns) {
+                document.getElementById(resId).innerHTML = "✅ 答啱咗啦！好叻女！";
+                document.getElementById(resId).style.color = "green";
+            } else {
+                document.getElementById(resId).innerHTML = "❌ 差少少，再試吓啦！(答案係: " + correctAns + ")";
+                document.getElementById(resId).style.color = "red";
+            }
+        }
+    </script>
+
+</body>
+</html>
