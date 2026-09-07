@@ -6,37 +6,137 @@
     <title>囡囡嘅專屬溫習站</title>
     <style>
         body { font-family: "Comic Sans MS", sans-serif; background-color: #fdf6e3; text-align: center; padding: 20px; }
-        h1 { color: #ff6b6b; }
-        .question-card { background: white; border-radius: 15px; padding: 20px; margin: 15px auto; width: 80%; max-width: 500px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
-        .word { font-size: 24px; font-weight: bold; color: #4ecdc4; margin: 10px 0; }
-        button { background-color: #ffe66d; border: none; padding: 10px 20px; font-size: 18px; border-radius: 10px; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
-        button:hover { background-color: #ffd166; }
-        input { font-size: 18px; padding: 5px; border-radius: 5px; border: 1px solid #ccc; text-align: center; }
+        h1 { color: #ff6b6b; font-size: 28px; }
+        h2 { color: #4ecdc4; font-size: 22px; margin-top: 30px; }
+        .question-card { background: white; border-radius: 15px; padding: 20px; margin: 15px auto; width: 90%; max-width: 600px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); text-align: left; }
+        .word { font-size: 22px; font-weight: bold; color: #ff9f43; margin: 10px 0; text-align: center; }
+        .btn-speak { background-color: #48dbfb; border: none; padding: 8px 15px; font-size: 16px; border-radius: 10px; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.2); margin-bottom: 10px; }
+        .btn-speak:hover { background-color: #0abde3; }
+        .btn-check { background-color: #ffe66d; border: none; padding: 8px 15px; font-size: 16px; border-radius: 10px; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.2); margin-left: 10px; }
+        .btn-check:hover { background-color: #ffd166; }
+        input { font-size: 18px; padding: 8px; border-radius: 5px; border: 1px solid #ccc; width: 60%; }
+        .input-full { width: 75%; }
+        .feedback { font-weight: bold; margin-top: 10px; }
     </style>
 </head>
 <body>
 
     <h1>🌟 學校生活小挑戰 🌟</h1>
 
+    <h2>🅰️ 第一部分：聽音拼字 (Vocabulary)</h2>
+
+    <!-- Vocab 1 -->
     <div class="question-card">
-        <p>聽讀音，然後拼出生字：</p>
-        <button onclick="speak('a principal')">🔊 聽發音</button>
-        <br><br>
+        <button class="btn-speak" onclick="speak('a principal')">🔊 聽發音</button>
+        <br>
         <input type="text" id="ans1" placeholder="輸入英文字">
-        <button onclick="checkAnswer('ans1', 'a principal')">檢查</button>
-        <p id="res1"></p>
+        <button class="btn-check" onclick="checkAnswer('ans1', 'a principal')">檢查</button>
+        <p id="res1" class="feedback"></p>
     </div>
 
+    <!-- Vocab 2 -->
     <div class="question-card">
-        <p>重組句子：</p>
+        <button class="btn-speak" onclick="speak('a teacher')">🔊 聽發音</button>
+        <br>
+        <input type="text" id="ans2" placeholder="輸入英文字">
+        <button class="btn-check" onclick="checkAnswer('ans2', 'a teacher')">檢查</button>
+        <p id="res2" class="feedback"></p>
+    </div>
+
+    <!-- Vocab 3 -->
+    <div class="question-card">
+        <button class="btn-speak" onclick="speak('a monitor')">🔊 聽發音</button>
+        <br>
+        <input type="text" id="ans3" placeholder="輸入英文字">
+        <button class="btn-check" onclick="checkAnswer('ans3', 'a monitor')">檢查</button>
+        <p id="res3" class="feedback"></p>
+    </div>
+
+    <!-- Vocab 4 -->
+    <div class="question-card">
+        <button class="btn-speak" onclick="speak('a classmate')">🔊 聽發音</button>
+        <br>
+        <input type="text" id="ans4" placeholder="輸入英文字">
+        <button class="btn-check" onclick="checkAnswer('ans4', 'a classmate')">檢查</button>
+        <p id="res4" class="feedback"></p>
+    </div>
+
+    <!-- Vocab 5 -->
+    <div class="question-card">
+        <button class="btn-speak" onclick="speak('the bell')">🔊 聽發音</button>
+        <br>
+        <input type="text" id="ans5" placeholder="輸入英文字">
+        <button class="btn-check" onclick="checkAnswer('ans5', 'the bell')">檢查</button>
+        <p id="res5" class="feedback"></p>
+    </div>
+
+    <!-- Vocab 6 -->
+    <div class="question-card">
+        <button class="btn-speak" onclick="speak('rings')">🔊 聽發音</button>
+        <br>
+        <input type="text" id="ans6" placeholder="輸入英文字">
+        <button class="btn-check" onclick="checkAnswer('ans6', 'rings')">檢查</button>
+        <p id="res6" class="feedback"></p>
+    </div>
+
+    <h2>🅱️ 第二部分：句子重組 (Sentences)</h2>
+    <p>提提你：記得打埋標點符號同留意大細階呀！</p>
+
+    <!-- Sentence 1 -->
+    <div class="question-card">
+        <p class="word">meet / Nice / Allie. / to / you,</p>
+        <button class="btn-speak" onclick="speak('Nice to meet you, Allie.')">🔊 聽發音提示</button><br><br>
+        <input type="text" id="ans7" class="input-full" placeholder="輸入完整句子">
+        <button class="btn-check" onclick="checkAnswer('ans7', 'Nice to meet you, Allie.')">檢查</button>
+        <p id="res7" class="feedback"></p>
+    </div>
+
+    <!-- Sentence 2 -->
+    <div class="question-card">
         <p class="word">are / old / you / How / ?</p>
-        <input type="text" id="ans2" placeholder="輸入完整句子" style="width: 80%;">
-        <button onclick="checkAnswer('ans2', 'How old are you?')">檢查</button>
-        <p id="res2"></p>
+        <button class="btn-speak" onclick="speak('How old are you?')">🔊 聽發音提示</button><br><br>
+        <input type="text" id="ans8" class="input-full" placeholder="輸入完整句子">
+        <button class="btn-check" onclick="checkAnswer('ans8', 'How old are you?')">檢查</button>
+        <p id="res8" class="feedback"></p>
+    </div>
+
+    <!-- Sentence 3 -->
+    <div class="question-card">
+        <p class="word">six / am / old / years / I / .</p>
+        <button class="btn-speak" onclick="speak('I am six years old.')">🔊 聽發音提示</button><br><br>
+        <input type="text" id="ans9" class="input-full" placeholder="輸入完整句子">
+        <button class="btn-check" onclick="checkAnswer('ans9', 'I am six years old.')">檢查</button>
+        <p id="res9" class="feedback"></p>
+    </div>
+
+    <!-- Sentence 4 -->
+    <div class="question-card">
+        <p class="word">children. / morning, / Good</p>
+        <button class="btn-speak" onclick="speak('Good morning, children.')">🔊 聽發音提示</button><br><br>
+        <input type="text" id="ans10" class="input-full" placeholder="輸入完整句子">
+        <button class="btn-check" onclick="checkAnswer('ans10', 'Good morning, children.')">檢查</button>
+        <p id="res10" class="feedback"></p>
+    </div>
+
+    <!-- Sentence 5 -->
+    <div class="question-card">
+        <p class="word">fine, / I / you. / am / thank</p>
+        <button class="btn-speak" onclick="speak('I am fine, thank you.')">🔊 聽發音提示</button><br><br>
+        <input type="text" id="ans11" class="input-full" placeholder="輸入完整句子">
+        <button class="btn-check" onclick="checkAnswer('ans11', 'I am fine, thank you.')">檢查</button>
+        <p id="res11" class="feedback"></p>
+    </div>
+
+    <!-- Sentence 6 -->
+    <div class="question-card">
+        <p class="word">time / to / is / home. / It / go</p>
+        <button class="btn-speak" onclick="speak('It is time to go home.')">🔊 聽發音提示</button><br><br>
+        <input type="text" id="ans12" class="input-full" placeholder="輸入完整句子">
+        <button class="btn-check" onclick="checkAnswer('ans12', 'It is time to go home.')">檢查</button>
+        <p id="res12" class="feedback"></p>
     </div>
 
     <script>
-        // 等待系統準備好唔同嘅發聲語言
         let voices = [];
         window.speechSynthesis.onvoiceschanged = () => {
             voices = window.speechSynthesis.getVoices();
@@ -44,8 +144,6 @@
 
         function speak(text) {
             let msg = new SpeechSynthesisUtterance(text);
-            
-            // 如果系統已經載入咗聲音，就盡量揀把好聽嘅美式/英式英文
             if (voices.length > 0) {
                 let engVoice = voices.find(v => v.lang === 'en-US' || v.name.includes('English') || v.lang === 'en-GB');
                 if (engVoice) {
@@ -54,22 +152,21 @@
             } else {
                 msg.lang = 'en-US';
             }
-
-            // 調校語速同聲調，等小朋友聽得清楚啲、舒服啲
-            msg.rate = 0.8;  // 0.8 係慢少少（預設係 1）
-            msg.pitch = 1.1; // 稍微高音少少，聽落開心啲
-
+            msg.rate = 0.8;  
+            msg.pitch = 1.1; 
             window.speechSynthesis.speak(msg);
         }
 
         function checkAnswer(inputId, correctAns) {
-            let userAns = document.getElementById(inputId).value.trim();
+            // 自動清除多餘空格，方便小朋友對答案
+            let userAns = document.getElementById(inputId).value.trim().replace(/\s+/g, ' ');
             let resId = inputId.replace('ans', 'res');
+            
             if (userAns.toLowerCase() === correctAns.toLowerCase()) {
                 document.getElementById(resId).innerHTML = "✅ 答啱咗啦！好叻女！";
                 document.getElementById(resId).style.color = "green";
             } else {
-                document.getElementById(resId).innerHTML = "❌ 差少少，再試吓啦！(答案係: " + correctAns + ")";
+                document.getElementById(resId).innerHTML = "❌ 差少少，再試吓啦！<br>(提示: " + correctAns + ")";
                 document.getElementById(resId).style.color = "red";
             }
         }
